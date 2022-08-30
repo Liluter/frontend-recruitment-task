@@ -5,7 +5,8 @@ $secondary-color: #E4C1AE;
 $shadow-color-hover: #b5b5b5;
 $text-color-hover: rgb(186, 111, 195);
 $white: #ffffff;
-$modal-background: #12121283;
+$modal-background: #12121285;
+$reset-alert-color: firebrick;
 
 *, *::before, *::after{
   padding: 0;
@@ -19,6 +20,19 @@ body {
   justify-content: center;
   font-family: 'Roboto' ,sans-serif;
   font-style: normal;
+}
+
+#reset{
+  cursor: pointer;
+  
+  &:hover{
+    background-color: transparent;
+    box-shadow: 0 0 10px rgb(219, 243, 255);
+    &::after{
+      content: ' reset counter';
+      color: rgb(139, 216, 255);
+    }
+  }
 }
 
 .container{
@@ -97,11 +111,11 @@ body {
     justify-content: center;
     align-items: center;
     background-color: $modal-background;
-    opacity: 0.1;
+    opacity: 0;
     visibility: hidden;
-    transition: all 400ms ease-in;
+    transition: all 100ms ease-in;
     
-    &.is-visible{
+    &.is-open{
       visibility: visible;
       opacity:  1;
     }
@@ -133,6 +147,10 @@ body {
       font-weight: 300;
       font-size: 16px;
       line-height: 150%;
+
+      &--reset{
+        color: $reset-alert-color;
+      }
     }
 
     &--close-modal{
@@ -148,6 +166,10 @@ body {
         background-image: url("../images/cross_red.svg" );
       }
     }
+  }
+  .modal__content--reset.hide{
+      opacity: 0;
+      visibility: hidden;
   }
 }
 

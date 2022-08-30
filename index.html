@@ -27,25 +27,32 @@
                 </section>
                 <footer>
                     <div class="aside__button " title="popup">
-                        <button type="button" class="aside__button--open-modal" data-open="modal">Button</button>
+                    <button type="button" 
+                        class="aside__button--open-modal" 
+                        data-open="modal-1"
+                        >
+                        Button
+                    </button>
                     </div>
                 </footer>
             </aside>
         </section>
 
-        <!-- modal  -->
+        <!-- modal is-visible -->
 
-        <div class="modal is-visible" id="modal1">
+        <div class="modal" id="modal-1">
             <div class="modal__dialog">
                 <header class="modal__header">
                     <p>Alert!</p>
                 </header>
                 <section class="modal__content">
-                    <p>You have clicked <strong id="counter">X times</strong> to related button.</p>
+                    <p>You have clicked <strong id="counter">0</strong><strong> times</strong> to related button.</p>
+                    <p id="resetAlert" class="modal__content--reset hide">If you think that's too much pess <span id="reset">0️⃣</span></p>
                 </section>
-                <button type="button" class="modal--close-modal" aria-label="close modal" data-close></button>
+                <button type="button" class="modal--close-modal" aria-label="close modal" data-close ></button>
             </div>
         </div>
 
     </div>
+    <script src="./dist/all.js"></script>
 </body>
