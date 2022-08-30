@@ -2,12 +2,15 @@
 
 $primary-color: #121212;
 $secondary-color: #E4C1AE;
+$shadow-color-hover: #b5b5b5;
+$text-color-hover: rgb(186, 111, 195);
 $white: #ffffff;
-
+$modal-background: #12121283;
 
 *, *::before, *::after{
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -60,7 +63,7 @@ body {
         line-height: 150%;
         color: $primary-color;
       }
-      &__button--popup{
+      &__button--open-modal{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -72,26 +75,105 @@ body {
         line-height: 100%;
         color: $white;
         background: $secondary-color;
-        border-radius: 24px 24px;;
+        border-radius: 24px 24px;
+        border:none;
+        &:hover{
+          cursor: pointer;
+          box-shadow: 0px 0px 8px $shadow-color-hover;
+          color: $text-color-hover;
+        }
       }
     }
 
   }
 
+  .modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $modal-background;
+    opacity: 0.1;
+    visibility: hidden;
+    transition: all 400ms ease-in;
+    
+    &.is-visible{
+      visibility: visible;
+      opacity:  1;
+    }
+
+    &__dialog {
+      position: relative ;
+      width: 920px;
+      height: 210px;  
+      background-color: $white;
+      padding: 16px 16px 16px 96px;
+      opacity: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    &__header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 42px;
+      line-height: 120%;
+    }
+
+    &__content{
+      width: 380px;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 150%;
+    }
+
+    &--close-modal{
+      position: absolute;
+      top: 46px;
+      right: 46px;
+      border: none;
+      background-image: url("../images/cross.svg" );
+      background-color: $white;
+      width: 24px;
+      height: 24px;
+      &:hover{
+        background-image: url("../images/cross_red.svg" );
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 1234px) {
-  .container .module {
-    gap: 64px;
-    .main{
-      &__image {
+  .container {
+    .module {
+      gap: 64px;
+      .main{
+        &__image {
+          width: 80vw;
+          height: calc(80vw / 1.5 );
+          background-image: url('../../images/sean-o-KMn4VEeEPR8-unsplash_1_s6zmfh_c_scale,w_1234.jpg');
+        }
+      }
+      .aside{
         width: 80vw;
-        height: calc(80vw / 1.5 );
-        background-image: url('../../images/sean-o-KMn4VEeEPR8-unsplash_1_s6zmfh_c_scale,w_1234.jpg');
       }
     }
-    .aside{
-      width: 80vw;
+    .modal{
+      &__dialog {
+        width: 840px;
+        padding-left: 96px;
+      }
+      &__header{
+        font-size: 42px;
+      }
     }
   }
 
@@ -114,6 +196,16 @@ body {
         &__header--title{
           font-size: 32px;
         }
+      }
+      
+    }
+    .modal{
+      &__dialog {
+        width: 740px;
+        padding-left: 64px;
+      }
+      &__header{
+        font-size: 32px;
       }
     }
   }
@@ -139,6 +231,18 @@ body {
         }
       }
     }
+    .modal{
+      &__dialog {
+        width: 400px;
+        padding-left: 32px;
+      }
+      &__header{
+        font-size: 32px;
+      }
+      &__content{
+        width: 340px;
+      }
+    }
   }
 }
 
@@ -161,6 +265,19 @@ body {
         &__header--title{
           font-size: 24px;
         }
+      }
+      
+    }
+    .modal{
+      &__dialog {
+        width: 340px;
+        padding-left: 16px;
+      }
+      &__header{
+        font-size: 32px;
+      }
+      &__content{
+        width: 340px;
       }
     }
     

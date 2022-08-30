@@ -19,18 +19,33 @@
                 <header class="aside__header">
                     <p class="aside__header--title">Lorem, Ipsum</p>
                 </header>
-                <article>
-                    <div class="aside__content">
+                <section class="aside__content">
+                    <article  >
                         <p>Infinitely scalable, feature-rich and cloud-native data management and protection for modern and legacy infrastructures and SaaS platforms, managed via a single app with no hardware required.
                         </p>
-                    </div>
-                </article>
+                    </article>
+                </section>
                 <footer>
-                    <div class="aside__button" title="popup">
-                        <div class="aside__button--popup">Button</div>
+                    <div class="aside__button " title="popup">
+                        <button type="button" class="aside__button--open-modal" data-open="modal">Button</button>
                     </div>
                 </footer>
             </aside>
         </section>
+
+        <!-- modal  -->
+
+        <div class="modal is-visible" id="modal1">
+            <div class="modal__dialog">
+                <header class="modal__header">
+                    <p>Alert!</p>
+                </header>
+                <section class="modal__content">
+                    <p>You have clicked <strong id="counter">X times</strong> to related button.</p>
+                </section>
+                <button type="button" class="modal--close-modal" aria-label="close modal" data-close></button>
+            </div>
+        </div>
+
     </div>
 </body>
