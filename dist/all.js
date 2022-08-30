@@ -1,0 +1,1 @@
+console.log("hello world");const Greetings=o=>{console.log(o)};Greetings("Hello World");

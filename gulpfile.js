@@ -1,7 +1,9 @@
 const { src, dest, watch, series, parallel } = require('gulp');
 
+const sass = require('gulp-sass')(require('sass'));
+
 const sourcemaps = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
+// const sass = require('gulp-sass'); //deprecated
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
@@ -15,11 +17,11 @@ const files = {
     jsPath: 'src/js/**/*.js'
 };
 
-function scssTask(){    
+function scssTask(){   
     return src(files.scssPath)
         .pipe(sourcemaps.init()) // initialize sourcemaps first
         .pipe(sass([])) // compile SCSS to CSS
-        .pipe(postcss([ autoprefixer(), cssnano() ])) // PostCSS plugins
+        .pipe(postcss([ autoprefixer(), cssnano() ])) // PostCSS plugins [ autoprefixer(), cssnano() ]
         .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
         .pipe(dest('dist')
     ); // put final CSS in dist folder

@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"main.css","sourcesContent":[]}
+{"version":3,"sources":["main.scss","main.css"],"names":[],"mappings":"AAAA,KAEE,YAAA,CADA,WCEF","file":"main.css","sourcesContent":["body{\r\n  width: 100px;\r\n  height:200px;\r\n}","body {\n  width: 100px;\n  height: 200px;\n}"]}
