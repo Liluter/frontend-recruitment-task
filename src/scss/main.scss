@@ -2,11 +2,27 @@
 
 $primary-color: #121212;
 $secondary-color: #E4C1AE;
+$secondary-color-hover: #8a5c44;
 $shadow-color-hover: #b5b5b5;
-$text-color-hover: rgb(186, 111, 195);
+$text-color-hover: rgb(0, 140, 255);
 $white: #ffffff;
 $modal-background: #12121285;
-$reset-alert-color: firebrick;
+$reset-alert-color: rgb(28, 34, 152);
+$primary-font: 'Roboto', sans-serif;
+
+@mixin font-theme($style, $weight, $size, $line){
+  font-style: $style;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line;
+}
+
+@mixin display-theme($dir, $just, $alig ){
+  display:flex;
+  flex-direction: $dir;
+  justify-content: $just;
+  align-items: $alig;
+}
 
 *, *::before, *::after{
   padding: 0;
@@ -14,23 +30,28 @@ $reset-alert-color: firebrick;
   box-sizing: border-box;
 }
 
+h1 {
+  @include font-theme( normal, 700, 42px, 120%);
+}
+
 body {
   width: 100vw;
-  display: flex;
-  justify-content: center;
-  font-family: 'Roboto' ,sans-serif;
-  font-style: normal;
+  @include display-theme( row, center, flex-start );
+  font-family: $primary-font;
 }
 
 #reset{
   cursor: pointer;
-  
+  border: none;
+  position: relative;
+  font-size: 24px;
+  top: 2px;
   &:hover{
     background-color: transparent;
     box-shadow: 0 0 10px rgb(219, 243, 255);
     &::after{
-      content: ' reset counter';
-      color: rgb(139, 216, 255);
+      content: 'reset';
+      color: $text-color-hover;
     }
   }
 }
@@ -39,12 +60,9 @@ body {
   background-color: $white;
   width: 1440px;
   padding-top: 96px;
-  display: flex;
-  justify-content: center;
-
+  @include display-theme( row, center, flex-start );
   .module{
-    display: flex;
-    justify-content: center;
+    @include display-theme( row, center, flex-start );
     gap: 96px;
     flex-wrap: wrap;
     .main{
@@ -56,37 +74,25 @@ body {
         background-size: cover;
       }
     }
-
     .aside{
       width: 380px;
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-
+      padding-top: 40px;
+      @include display-theme( column, center, flex-start );
       &__header--title{
-        font-weight: 700;
-        font-size: 42px;
-        line-height: 120%;
+        @include font-theme(normal, 700,42px,120% );
         color: $primary-color;
       }
       &__content{
         margin: 24px 0 32px 0;
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 150%;
+        @include font-theme(normal, 300,16px,150% );
         color: $primary-color;
       }
       &__button--open-modal{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include display-theme( row, center, center );
         text-align: center;
         width: 128px;
         height: 48px;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 100%;
+        @include font-theme(normal, 700,16px,100% );
         color: $white;
         background: $secondary-color;
         border-radius: 24px 24px;
@@ -95,10 +101,10 @@ body {
           cursor: pointer;
           box-shadow: 0px 0px 8px $shadow-color-hover;
           color: $text-color-hover;
+          background-color: $secondary-color-hover;
         }
       }
     }
-
   }
 
   .modal{
@@ -107,19 +113,16 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include display-theme( row, center, center );
     background-color: $modal-background;
     opacity: 0;
     visibility: hidden;
     transition: all 100ms ease-in;
-    
+    font-family: $primary-font;
     &.is-open{
       visibility: visible;
       opacity:  1;
     }
-
     &__dialog {
       position: relative ;
       width: 920px;
@@ -127,32 +130,24 @@ body {
       background-color: $white;
       padding: 16px 16px 16px 96px;
       opacity: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      @include display-theme( column, center, flex-start );
       gap: 24px;
     }
-
     &__header{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 700;
-      font-size: 42px;
-      line-height: 120%;
+      @include display-theme( row, space-between, center );
+      @include font-theme(normal, 700,42px,120% );
+      color: $primary-color;
     }
-
     &__content{
       width: 380px;
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 150%;
-
+      @include font-theme(normal, 300,16px,150% );
+      &--results{
+        font-weight: 700;
+      }
       &--reset{
         color: $reset-alert-color;
       }
     }
-
     &--close-modal{
       position: absolute;
       top: 46px;
@@ -198,7 +193,6 @@ body {
       }
     }
   }
-
 }
 
 @media screen and (max-width: 1002px) {
@@ -269,10 +263,8 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-  
   .container {
     padding-top: 16px;
-    
     .module {
       gap: 24px;
       .main{
@@ -288,7 +280,6 @@ body {
           font-size: 24px;
         }
       }
-      
     }
     .modal{
       &__dialog {
@@ -302,7 +293,5 @@ body {
         width: 340px;
       }
     }
-    
   }
-
 }

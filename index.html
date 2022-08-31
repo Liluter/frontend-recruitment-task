@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="dist/main.css">
 </head>
 <body>
-    <div class="container">
-        <section class="module">
+    <div class="container" title="container">
+        <section class="module" title="module">
             <main class="main">
                 <article>
-                    <div class='main__image' alt="sunset view" title="sunset"></div>
+                    <div class='main__image' name="image" alt="nice sunset view, beach, ocean, nice weather" role="img"  aria-label="sunset views"></div>
                 </article>
             </main>
             <aside class="aside">
                 <header class="aside__header">
-                    <p class="aside__header--title">Lorem, Ipsum</p>
+                    <h1 class="aside__header--title" >Lorem, Ipsum</h1>
                 </header>
                 <section class="aside__content">
                     <article  >
@@ -25,32 +25,31 @@
                         </p>
                     </article>
                 </section>
-                <footer>
-                    <div class="aside__button " title="popup">
+                <footer class="aside__button ">
                     <button type="button" 
                         class="aside__button--open-modal" 
                         data-open="modal-1"
+                        aria-label="open modal 1"
                         >
                         Button
                     </button>
-                    </div>
                 </footer>
             </aside>
         </section>
 
         <!-- modal is-visible -->
 
-        <div class="modal" id="modal-1">
-            <div class="modal__dialog">
-                <header class="modal__header">
-                    <p>Alert!</p>
+        <div class="modal" id="modal-1" role="popup">
+            <main class="modal__dialog">
+                <header class="modal__header" >
+                    <h1 >Alert!</h1>
                 </header>
-                <section class="modal__content">
-                    <p>You have clicked <strong id="counter">0</strong><strong> times</strong> to related button.</p>
-                    <p id="resetAlert" class="modal__content--reset hide">If you think that's too much pess <span id="reset">0️⃣</span></p>
-                </section>
+                <article class="modal__content">
+                    <p>You have clicked <b class="modal__content--results" ><span id="counter">0</span> times</b> to related button.</p>
+                    <p id="resetAlert" class="modal__content--reset hide" role="alert">If you think that's too much pess <button id="reset" type="button" aria-label="reset counter">0️⃣</button></p>
+                </article>
                 <button type="button" class="modal--close-modal" aria-label="close modal" data-close ></button>
-            </div>
+            </main>
         </div>
 
     </div>
