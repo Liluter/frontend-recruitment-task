@@ -1,0 +1,13 @@
+@mixin font-theme($style, $weight, $size, $line){
+  font-style: $style;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line;
+}
+
+@mixin display-theme($dir, $just, $alig ){
+  display:flex;
+  flex-direction: $dir;
+  justify-content: $just;
+  align-items: $alig;
+}

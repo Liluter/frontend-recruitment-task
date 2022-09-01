@@ -1,28 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import "typography.scss";
 
-$primary-color: #121212;
-$secondary-color: #E4C1AE;
-$secondary-color-hover: #8a5c44;
-$shadow-color-hover: #b5b5b5;
-$text-color-hover: rgb(0, 140, 255);
-$white: #ffffff;
-$modal-background: #12121285;
-$reset-alert-color: rgb(28, 34, 152);
-$primary-font: 'Roboto', sans-serif;
+@import "mixins.scss";
 
-@mixin font-theme($style, $weight, $size, $line){
-  font-style: $style;
-  font-weight: $weight;
-  font-size: $size;
-  line-height: $line;
-}
+@import 'variables.scss';
 
-@mixin display-theme($dir, $just, $alig ){
-  display:flex;
-  flex-direction: $dir;
-  justify-content: $just;
-  align-items: $alig;
-}
 
 *, *::before, *::after{
   padding: 0;
